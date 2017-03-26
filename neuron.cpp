@@ -33,6 +33,7 @@ float neuron::findOutput() {
     //Activate with sigmoid of hLayerSum
     say("Activating with Hidden Layer Sum Of " + QString().setNum(hLayerSum) );
     output = sigmoid(hLayerSum);
+    retVal = output;
     say("Output: " + QString().setNum(getOutput()) );
     return retVal;
 }
@@ -42,10 +43,29 @@ void neuron::setExampleInputs() {
     setInput(1,1);
 }
 
-void neuron::setExampleWeights() {
-    setWeight(0,0.8);
-    setWeight(1,0.2);
-    setOutputWeight(0.3);
+void neuron::setExampleWeights(int whichExampleNode) {
+    switch(whichExampleNode) {
+        case 0: {
+            setWeight(0,0.8);
+            setWeight(1,0.2);
+            setOutputWeight(0.3);
+            break;
+        }
+        case 1: {
+            setWeight(0,0.4);
+            setWeight(1,0.9);
+            setOutputWeight(0.5);
+            break;
+        }
+        case 2: {
+            setWeight(0,0.3);
+            setWeight(1,0.5);
+            setOutputWeight(0.9);
+            break;
+        }
+    }
+
+
 }
 
 float neuron::sigmoid(float x) {

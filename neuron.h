@@ -19,10 +19,10 @@ public:
     float getOutputWeight();
     void setOutputWeight(float w);
     void setExampleInputs();
-    void setExampleWeights();
-
-private:
+    void setExampleWeights(int whichExampleNode=0);
     float sigmoid(float x);
+private:
+
     float dSigmoid(float x);
     QList<float> inputs;
     QList<float> weights;
