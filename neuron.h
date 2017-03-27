@@ -9,6 +9,7 @@ class neuron : public QObject {
     Q_OBJECT
 public:
     explicit neuron(int inputs,QObject *parent = 0);
+    ~neuron();
     void setInput(int which,float data);
     float getInput(int which);
     void setWeight(int which,float data);

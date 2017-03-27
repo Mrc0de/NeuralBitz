@@ -13,6 +13,10 @@ neuron::neuron(int inputs, QObject *parent) : QObject(parent) {
 //    std::cout<<this<<"> D_Test: Derivative of Sigmoid(1.235) is "<<dSigmoid(1.235)<<std::endl;
 }
 
+neuron::~neuron(){
+    say("Destroying neuron...");
+}
+
 void neuron::say(QString sayThis) {
     std::cout<<this<<"> "<<sayThis.toStdString()<<std::endl;
 }

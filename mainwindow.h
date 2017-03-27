@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "neuron.h"
+#include "neuralbitznetwork.h"
 
 class MainWindow : public QMainWindow
 {
@@ -13,7 +14,7 @@ public:
     ~MainWindow();
 private:
     QApplication *myApp;
-    neuron *myN[3];
+    neuralBitzNetwork *myNet;
 };
 
 #endif // MAINWINDOW_H
