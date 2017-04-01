@@ -26,7 +26,8 @@ float neuron::findOutput() {
     QList<float> hiddenLayers;
     for(int f=0; f<inputs.size(); f++){
         say("Input " + QString().setNum(f + 1) + " = " + QString().setNum(inputs.at(f)));
-        hiddenLayers.append((inputs.at(f) * weights.at(f)));
+        float value = (inputs.at(f) * weights.at(f));
+        hiddenLayers.append(value);
         say(QString().setNum(inputs.at(f)) +" * " + QString().setNum(weights.at(f)) +" = "+QString().setNum(hiddenLayers.at(f)));
     }
     //Sum Hidden Layer Results

@@ -13,7 +13,18 @@ public:
     ~neuralBitzNetwork();
     void setInputs(QList<float>);
     void setWeights(QList<float>);
+    bool setup(QList<float> inputList,QList<float> weightList,QList<float> outputWeightList);
+    float mExpectedOutput;
+    bool mDelayedExpectedOutput;
+    bool checkForExpectedOutput();
+    float fetchExpectedOutput();
+    void setTraining(bool train);
+    bool getTraining(bool train);
+    float findNetworkOutput();
+    float getLastOutput();
 private:
+    float sigmoid(float x);
+    float dSigmoid(float x);
     void say(QString sayThis);
     void setNeuronInputs(QList<float> i);
     void setNeuronWeights(QList<float> w);
@@ -22,7 +33,11 @@ private:
     QList<neuron*> mNeurons;
     int mNeuronNum;
     int mInputNum;
+    int mWeightNum;
+    int mInWeightPerNeuron;
     QObject *myParent;
+    bool training;
+    float mNetworkOutput;
 signals:
 
 public slots:
