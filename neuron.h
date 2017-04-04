@@ -36,6 +36,7 @@ private:
     void say(QString sayThis);
     QWidget *mParent;
     float mHiddenLayerSum;
+    int mInputNum;
 signals:
 
 public slots:

@@ -3,14 +3,13 @@
 #include "neuralbitznetwork.h"
 #include <iostream>
 #include <QApplication>
+#include <QTimer>
 
 MainWindow::MainWindow(QApplication *app, QWidget *parent) : QMainWindow(parent) {
     myApp = app;
     std::cout<<"Parent Application: ("<<myApp<<")"<<std::endl;
     std::cout<<"Created Main Window...("<<this<<")"<<std::endl;
-    setGeometry(128, 128, 173,73);
-    updateGeometry();
-    update();
+    setGeometry(128, 128, 256,256);
     myNet = new neuralBitzNetwork(3,2,this);
 
     //Example usage below
@@ -31,7 +30,13 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) : QMainWindow(parent)
     myNet->mExpectedOutput = 0;
     if ( ! myNet->setup(inputs,weights,outWeights) ) { QApplication::exit(1); }
     float answer = myNet->findNetworkOutput();
-
+    if (!myNet->mDelayedExpectedOutput){
+        //If expected value is already known
+        QTimer::singleShot(1000, myNet, SLOT(selfC()));
+    } else {
+        //If comparison value is unknown until a later time
+        myNet->mExpectedOutput = NULL;
+    }
     //Todo: Adjust Weights and Continue Training Network
     //Todo: Create Functions to produce the above
 }

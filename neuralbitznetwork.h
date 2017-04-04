@@ -24,7 +24,10 @@ public:
     float findNetworkOutput();
     float getLastOutput();
     void paintEvent(QPaintEvent *);
+    float getLastAnswer();
     int mNeuronNum;
+    void selfCorrect();
+    bool killMe;
 private:
     float sigmoid(float x);
     float dSigmoid(float x);
@@ -34,17 +37,22 @@ private:
     QList<float> mInputs;
     QList<float> mWeights;
     QList<neuron*> mNeurons;
-
+    long mEpoch;
     int mInputNum;
     int mWeightNum;
     int mInWeightPerNeuron;
-    bool training;
+    bool mTraining;
     float mNetworkOutput;
     QRectF *mNetRect;
     QMainWindow *myParent;
+    float mLastAnswer;
+    float mMarginOfError;
+    float mDeltaOutputSum;
 signals:
 
 public slots:
+    void selfC();
+    void findOut();
 };
 
 #endif // NEURALBITZNETWORK_H

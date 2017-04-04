@@ -15,7 +15,7 @@ neuron::neuron(int inputs, QWidget *parent, int sequence) : QWidget(parent) {
     std::cout<<"Inputs: "<<inputs<<std::endl;
 //    std::cout<<this<<"> S_Test: Sigmoid Of 1 is "<<sigmoid(1)<<std::endl;
 //    std::cout<<this<<"> D_Test: Derivative of Sigmoid(1.235) is "<<dSigmoid(1.235)<<std::endl;
-    setGeometry(0,0,32,32);
+    setGeometry(0,0,75,75);
     mRect = new QRectF(this->x() + mParent->x(),this->y() + mParent->y(),this->width()-1,this->height()-1);
 }
 
@@ -33,11 +33,17 @@ void neuron::paintEvent(QPaintEvent *) {
     painter.setPen(Qt::SolidLine);
     painter.setBrush(Qt::red);
     painter.drawRect(*mRect);
+    painter.drawText(4,12,"Inputs: " + QString().setNum(mInputNum) );
+    painter.drawText(4,24,"HLS: " + QString().setNum(mHiddenLayerSum) );
+    painter.drawText(4,36,"Ow: " + QString().setNum(outputWeight) );
+    painter.drawText(4,48,"O: " + QString().setNum(output) );
+    painter.drawText(4,60,"Wo: " + QString().setNum(output * outputWeight) );
 }
 
 float neuron::findOutput() {
     float retVal = 0;
     QList<float> hiddenLayers;
+    mInputNum = inputs.size();
     for(int f=0; f<inputs.size(); f++){
         say("Input " + QString().setNum(f + 1) + " = " + QString().setNum(inputs.at(f)));
         float value = (inputs.at(f) * weights.at(f));
@@ -49,6 +55,7 @@ float neuron::findOutput() {
     for (int f=0;f<hiddenLayers.size();f++){
         hLayerSum += hiddenLayers.at(f);
     }
+    mHiddenLayerSum = hLayerSum;
     //Activate with sigmoid of hLayerSum
     say("Activating with Hidden Layer Sum Of " + QString().setNum(hLayerSum) );
     output = sigmoid(hLayerSum);
