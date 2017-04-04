@@ -24,6 +24,7 @@ public:
     float findNetworkOutput();
     float getLastOutput();
     void paintEvent(QPaintEvent *);
+    int mNeuronNum;
 private:
     float sigmoid(float x);
     float dSigmoid(float x);
@@ -33,13 +34,13 @@ private:
     QList<float> mInputs;
     QList<float> mWeights;
     QList<neuron*> mNeurons;
-    int mNeuronNum;
+
     int mInputNum;
     int mWeightNum;
     int mInWeightPerNeuron;
     bool training;
     float mNetworkOutput;
-    QRect *mNetRect;
+    QRectF *mNetRect;
     QMainWindow *myParent;
 signals:
 

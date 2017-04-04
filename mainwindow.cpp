@@ -8,6 +8,9 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) : QMainWindow(parent)
     myApp = app;
     std::cout<<"Parent Application: ("<<myApp<<")"<<std::endl;
     std::cout<<"Created Main Window...("<<this<<")"<<std::endl;
+    setGeometry(128, 128, 173,73);
+    updateGeometry();
+    update();
     myNet = new neuralBitzNetwork(3,2,this);
 
     //Example usage below

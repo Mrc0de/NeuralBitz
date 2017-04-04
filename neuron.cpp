@@ -1,4 +1,5 @@
 #include "neuron.h"
+#include "neuralbitznetwork.h"
 #include <iostream>
 #include <cmath>
 #include <QTime>
@@ -8,11 +9,14 @@
 
 neuron::neuron(int inputs, QWidget *parent, int sequence) : QWidget(parent) {
     //QTime::currentTime()
+    mParent = parent;
+    mHiddenLayerSum = NULL;
     std::cout<<"I am Neuron: "<<this<<" (Parent: "<<parent<<")"<<std::endl;
     std::cout<<"Inputs: "<<inputs<<std::endl;
 //    std::cout<<this<<"> S_Test: Sigmoid Of 1 is "<<sigmoid(1)<<std::endl;
 //    std::cout<<this<<"> D_Test: Derivative of Sigmoid(1.235) is "<<dSigmoid(1.235)<<std::endl;
-    mRect = new QRectF(16*sequence,10,15,15);
+    setGeometry(0,0,32,32);
+    mRect = new QRectF(this->x() + mParent->x(),this->y() + mParent->y(),this->width()-1,this->height()-1);
 }
 
 neuron::~neuron(){
@@ -26,8 +30,9 @@ void neuron::say(QString sayThis) {
 
 void neuron::paintEvent(QPaintEvent *) {
     QPainter painter(this);
-    painter.setPen(Qt::green);
-    painter.fillRect(*mRect,Qt::green);
+    painter.setPen(Qt::SolidLine);
+    painter.setBrush(Qt::red);
+    painter.drawRect(*mRect);
 }
 
 float neuron::findOutput() {
@@ -50,6 +55,10 @@ float neuron::findOutput() {
     retVal = output;
     say("Output: " + QString().setNum(getOutput()) );
     return retVal;
+}
+
+float neuron::getHiddenLayerSum() {
+    return mHiddenLayerSum;
 }
 
 void neuron::setExampleInputs() {

@@ -25,6 +25,7 @@ public:
     void setExampleWeights(int whichExampleNode=0);
     float sigmoid(float x);
     void paintEvent(QPaintEvent *);
+    float getHiddenLayerSum();
 private:
     QRectF *mRect;
     float dSigmoid(float x);
@@ -33,7 +34,8 @@ private:
     float output;
     float outputWeight;
     void say(QString sayThis);
-
+    QWidget *mParent;
+    float mHiddenLayerSum;
 signals:
 
 public slots:
