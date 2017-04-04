@@ -2,13 +2,15 @@
 #define NEURON_H
 
 #include <QObject>
+#include <QWidget>
 #include <QList>
+#include <QRectF>
 
 
-class neuron : public QObject {
+class neuron : public QWidget {
     Q_OBJECT
 public:
-    explicit neuron(int inputs,QObject *parent = 0);
+    explicit neuron(int inputs,QWidget *parent = 0, int sequence=1);
     ~neuron();
     void setInput(int which,float data);
     float getInput(int which);
@@ -22,8 +24,9 @@ public:
     void setExampleInputs();
     void setExampleWeights(int whichExampleNode=0);
     float sigmoid(float x);
+    void paintEvent(QPaintEvent *);
 private:
-
+    QRectF *mRect;
     float dSigmoid(float x);
     QList<float> inputs;
     QList<float> weights;

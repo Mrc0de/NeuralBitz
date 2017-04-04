@@ -16,14 +16,14 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) : QMainWindow(parent)
     inputs.append(1);
     inputs.append(1);
     QList<float> weights;
-    //Example weights (replace em)
+    //Example weights (replace with random number 0-1)
     weights.append(0.8);weights.append(0.4);weights.append(0.3);
     weights.append(0.2);weights.append(0.9);weights.append(0.5);
     QList<float> outWeights;
-    //Example Output weights (replace em)
+    //Example Output weights (replace random number 0-1)
     outWeights.append(0.3);outWeights.append(0.5);outWeights.append(0.9);
 
-    //The above example trains to become an AND gate by seeking output of 0.
+    //The above example trains to become an XOR gate by seeking output of 0 (from 2 inputs of 1).
     //Example values from some dudes website about AI (TODO: add url)
     myNet->mExpectedOutput = 0;
     if ( ! myNet->setup(inputs,weights,outWeights) ) { QApplication::exit(1); }

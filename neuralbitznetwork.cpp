@@ -1,10 +1,15 @@
 #include "neuralbitznetwork.h"
 #include "neuron.h"
 #include <iostream>
+#include <QPoint>
+#include <QSize>
+#include <QRect>
+#include <QPainter>
+#include <QWidget>
 
 #define e 2.71828
 
-neuralBitzNetwork::neuralBitzNetwork(int neurons, int inputs,QObject *parent) : QObject(parent) {
+neuralBitzNetwork::neuralBitzNetwork(int neurons, int inputs,QMainWindow *parent) : QWidget(parent) {
     myParent = parent;
     mNeuronNum = neurons;
     mInputNum = inputs;
@@ -12,10 +17,20 @@ neuralBitzNetwork::neuralBitzNetwork(int neurons, int inputs,QObject *parent) : 
     std::cout<<"Network "<<this<<" Created... ( Parent: "<<parent<<" )"<<std::endl;
     std::cout<<this<<"> Creating "<<mNeuronNum<<" Neurons with "<<mInputNum<<" Inputs each."<<std::endl;
     for(int n=0;n<neurons;n++) {
-        mNeurons.append(new neuron(mInputNum,this));
+        mNeurons.append(new neuron(mInputNum,this,n+1));
     }
     say("Total Input Weights Needed: " + QString().setNum(neurons * inputs));
     say("Input Weights Per Neuron: " + QString().setNum(mInWeightPerNeuron));
+    mNetRect = new QRect(QPoint(2, 2), QSize(mNeuronNum * 24, mNeuronNum * 24));
+    myParent->setGeometry(128, 128, 128,64);
+}
+
+void neuralBitzNetwork::paintEvent(QPaintEvent *) {
+    QPainter painter(this);
+    painter.setPen(Qt::red);
+    painter.setFont(QFont("Arial", 30));
+    painter.drawRect(*mNetRect);
+    painter.fillRect(*mNetRect, QColor(255,0,0));
 }
 
 neuralBitzNetwork::~neuralBitzNetwork() {
@@ -23,6 +38,7 @@ neuralBitzNetwork::~neuralBitzNetwork() {
     for(int d=0;d<mNeurons.size();d++){
         delete mNeurons[d];
     }
+    delete mNetRect;
     say("Destroyed neuralBitzNetwork...");
 }
 

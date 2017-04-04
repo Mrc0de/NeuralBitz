@@ -3,13 +3,14 @@
 
 #include <QObject>
 #include <QList>
+#include <QMainWindow>
 #include "neuron.h"
 
-class neuralBitzNetwork : public QObject
+class neuralBitzNetwork : public QWidget
 {
     Q_OBJECT
 public:
-    explicit neuralBitzNetwork(int neurons, int inputs,QObject *parent = 0);
+    explicit neuralBitzNetwork(int neurons, int inputs,QMainWindow *parent = 0);
     ~neuralBitzNetwork();
     void setInputs(QList<float>);
     void setWeights(QList<float>);
@@ -22,6 +23,7 @@ public:
     bool getTraining(bool train);
     float findNetworkOutput();
     float getLastOutput();
+    void paintEvent(QPaintEvent *);
 private:
     float sigmoid(float x);
     float dSigmoid(float x);
@@ -35,9 +37,10 @@ private:
     int mInputNum;
     int mWeightNum;
     int mInWeightPerNeuron;
-    QObject *myParent;
     bool training;
     float mNetworkOutput;
+    QRect *mNetRect;
+    QMainWindow *myParent;
 signals:
 
 public slots:

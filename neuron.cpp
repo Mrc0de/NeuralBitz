@@ -2,23 +2,32 @@
 #include <iostream>
 #include <cmath>
 #include <QTime>
+#include <QPainter>
 
 #define e 2.71828
 
-neuron::neuron(int inputs, QObject *parent) : QObject(parent) {
+neuron::neuron(int inputs, QWidget *parent, int sequence) : QWidget(parent) {
     //QTime::currentTime()
     std::cout<<"I am Neuron: "<<this<<" (Parent: "<<parent<<")"<<std::endl;
     std::cout<<"Inputs: "<<inputs<<std::endl;
 //    std::cout<<this<<"> S_Test: Sigmoid Of 1 is "<<sigmoid(1)<<std::endl;
 //    std::cout<<this<<"> D_Test: Derivative of Sigmoid(1.235) is "<<dSigmoid(1.235)<<std::endl;
+    mRect = new QRectF(16*sequence,10,15,15);
 }
 
 neuron::~neuron(){
     say("Destroying neuron...");
+    delete mRect;
 }
 
 void neuron::say(QString sayThis) {
     std::cout<<this<<"> "<<sayThis.toStdString()<<std::endl;
+}
+
+void neuron::paintEvent(QPaintEvent *) {
+    QPainter painter(this);
+    painter.setPen(Qt::green);
+    painter.fillRect(*mRect,Qt::green);
 }
 
 float neuron::findOutput() {

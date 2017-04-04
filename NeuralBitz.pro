@@ -20,3 +20,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     neuron.h \
     neuralbitznetwork.h
+
+FORMS += \
+    mainwindow.ui
