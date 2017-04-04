@@ -2,7 +2,9 @@
 Experimental Neural Net Stuff
 </br>
 Picture: https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswerOneEpoch.jpg</br></br>
-
+https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer18Epochs.jpg</br>
+https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer110Epochs.jpg</br>
+https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer2042Epochs.jpg</br>
 
 Learned the formulas and concept here: https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/ </br>
 
