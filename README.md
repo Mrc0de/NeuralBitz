@@ -27,7 +27,6 @@ Learned the formulas and concept here: https://stevenmiller888.github.io/mind-ho
 - SelfCorrect for 59 minutes</br>
 - Repeat</br>
 </br>
-</br>
 # Sample console output</br>
 </br>Parent Application: (0x28fe44)</br>
 Created Main Window...(0x28fe24)</br>
