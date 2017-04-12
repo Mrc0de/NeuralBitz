@@ -7,7 +7,28 @@ https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer110Epochs.jpg</br>
 https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer2042Epochs.jpg</br>
 
 Learned the formulas and concept here: https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/ </br>
-
+</br>
+# Purposes</br>
+- Learn how to do Neural Network stuff (check)</br>
+- Implement in C++/Qt (check)</br>
+- Understand it (wip)</br>
+- use delayed expected output (not ready when answer is) (check)</br>
+# steps</br>
+- Fetch Bitcoin USD Price (check) (next commit)</br>
+- Take 24 inputs (has 3, wip) </br>
+- Fetch Bitcoin Price hourly for 24 hours</br>
+- Feed 24 inputs with scaled down (0.00000000) prices</br>
+- Random weights</br>
+- Activate network, get output Epoch 1</br>
+- Fetch current bitcoin price</br>
+- SelfCorrect for 59 minutes.</br>
+- Hourly, remove oldest input, shift remaining inputs, push current price onto top input</br>
+- Activate Network, get output Epoch 2</br>
+- SelfCorrect for 59 minutes</br>
+- Repeat</br>
+</br>
+</br>
+# Sample console output</br>
 </br>Parent Application: (0x28fe44)</br>
 Created Main Window...(0x28fe24)</br>
 Network 0x853140 Created... ( Parent: 0x28fe24 )</br>
