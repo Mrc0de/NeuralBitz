@@ -1,7 +1,7 @@
 # NeuralBitz
 Experimental Neural Net Stuff
 </br>
-Picture: https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswerOneEpoch.jpg</br>
+<img src="https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswerOneEpoch.jpg"></img></br>
 https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer18Epochs.jpg</br>
 https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer110Epochs.jpg</br>
 https://github.com/Mrc0de/NeuralBitz/blob/master/finalAnswer2042Epochs.jpg</br>
